@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picasso d’Alep</title>
+
+<style>
+:root{
+  --bg:#000;
+  --glass:rgba(0,0,0,0.45);
+  --text:#fff;
+  --gold:#d4af37;
+}
+body.light{
+  --bg:#f4f4f4;
+  --glass:rgba(255,255,255,0.6);
+  --text:#000;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI";}
+body{background:var(--bg);color:var(--text);scroll-behavior:smooth;}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gold);
+}
+.nav-container{
+  max-width:1400px;
+  margin:auto;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav h1{color:var(--gold);}
+
+nav ul{
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+}
+nav a:hover{color:var(--gold);}
+
+#themeBtn{
+  cursor:pointer;
+  background:var(--gold);
+  color:black;
+  padding:.4rem .8rem;
+  border-radius:20px;
+  font-size:.9rem;
+}
+
+/* ===== BURGER ===== */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+.burger span{
+  width:25px;
+  height:3px;
+  background:var(--gold);
+  transition:.4s;
+}
+
+/* MOBILE MENU */
+@media(max-width:900px){
+  nav ul{
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:var(--glass);
+    backdrop-filter:blur(20px);
+    flex-direction:column;
+    padding:1.5rem;
+    border-radius:20px;
+    border:1px solid var(--gold);
+    display:none;
+  }
+  nav ul.show{display:flex;}
+  .burger{display:flex;}
+}
+
+/* ===== HERO ===== */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:80px;
+  background-size:cover;
+  background-position:center;
+  transition:background-image 1.5s ease-in-out;
+}
+
+/* ===== VGLASS ===== */
+.vglass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  border:1px solid var(--gold);
+  padding:2rem;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.vglass.show{opacity:1;transform:translateY(0);}
+
+/* ===== SECTIONS ===== */
+section{padding:6rem 8%;}
+h2,h3{color:var(--gold);}
+h3{text-align:center;margin-bottom:3rem;font-size:2.5rem;}
+h4{color:var(--gold);margin:3rem 0 1.5rem;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+}
+.grid img{
+  width:100%;
+  border-radius:14px;
+  transition:.4s;
+}
+.grid img:hover{transform:scale(1.05);}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:1.5rem;
+  padding:1rem 2rem;
+  background:var(--gold);
+  color:black;
+  border-radius:14px;
+  text-decoration:none;
+}
+
+/* CALL */
+.call-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--gold);
+  color:black;
+  padding:1rem 1.5rem;
+  border-radius:40px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* MAP */
+.map iframe{
+  width:100%;
+  height:400px;
+  border-radius:20px;
+  border:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-container">
+    <h1>Picasso d’Alep</h1>
+
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul id="navMenu">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#map">Localisation</a></li>
+      <li><span id="themeBtn">Thème</span></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="accueil">
+  <div class="vglass">
+    <h2>Picasso d’Alep</h2>
+    <p>Cuisine syrienne authentique à Saint-Junien</p>
+    <a href="#menu" class="btn">Voir le menu</a>
+  </div>
+</section>
+
+<section id="apropos">
+  <h3>À propos</h3>
+  <div class="vglass">
+    Restaurant syrien authentique, cuisine maison généreuse inspirée
+    des traditions d’Alep.
+  </div>
+</section>
+
+<section id="services">
+  <h3>Nos services</h3>
+  <div class="grid">
+    <div class="vglass">🍽 Sur place</div>
+    <div class="vglass">🥡 À emporter</div>
+    <div class="vglass">🎉 Groupes & événements</div>
+  </div>
+</section>
+
+<section id="menu">
+  <h3>Notre Carte</h3>
+
+  <h4>Desserts & Boissons</h4>
+  <div class="grid">
+    <div class="vglass"><img src="images/desserts_maison.jpg"><h5>Desserts maison</h5></div>
+    <div class="vglass"><img src="images/cafe_the.jpg"><h5>Café & Thé</h5></div>
+  </div>
+
+  <h4>Plats Principaux</h4>
+  <div class="grid">
+    <div class="vglass"><img src="images/shawarma.jpg"><h5>Shawarma</h5></div>
+    <div class="vglass"><img src="images/planche_orientale.jpg"><h5>Planche orientale</h5></div>
+    <div class="vglass"><img src="images/assiette_viande_mixte.jpg"><h5>Assiette mixte</h5></div>
+    <div class="vglass"><img src="images/cappadoce_koftazi.jpg"><h5>Koftazi</h5></div>
+    <div class="vglass"><img src="images/sojuk.jpg"><h5>Sojuk</h5></div>
+  </div>
+</section>
+
+<section id="galerie">
+  <h3>Galerie</h3>
+  <div class="grid">
+    <img src="images/plat1.jpg">
+    <img src="images/plat2.jpg">
+    <img src="images/plat3.jpg">
+    <img src="images/plat4.jpg">
+  </div>
+</section>
+
+<section id="avis">
+  <h3>Avis clients</h3>
+  <div class="grid" id="avisContainer"></div>
+</section>
+
+<section id="map">
+  <h3>Localisation</h3>
+  <div class="vglass map">
+    <p>32 Bd Victor Hugo, 32 bis, 87200 Saint-Junien, France</p>
+    <iframe src="https://www.google.com/maps?q=32%20Bd%20Victor%20Hugo%2032%20bis%2087200%20Saint-Junien&output=embed"></iframe>
+  </div>
+</section>
+
+<a href="tel:+33766828191" class="call-btn">📞 Appeler</a>
+
+<script>
+// THEME
+themeBtn.onclick=()=>document.body.classList.toggle("light");
+
+// BURGER MENU
+const burger=document.getElementById("burger");
+const navMenu=document.getElementById("navMenu");
+burger.onclick=()=>navMenu.classList.toggle("show");
+
+// BACKGROUND SLIDER
+const images=["images/bg1.jpg","images/bg2.jpg","images/bg3.jpg"];
+let i=0;
+const hero=document.querySelector(".hero");
+hero.style.backgroundImage=`url(${images[0]})`;
+setInterval(()=>{
+  i=(i+1)%images.length;
+  hero.style.backgroundImage=`url(${images[i]})`;
+},5000);
+
+// SCROLL ANIMATION
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"));
+},{threshold:.2});
+document.querySelectorAll(".vglass").forEach(el=>obs.observe(el));
+
+// AVIS
+const noms=["Alex","Sarah","Lucas","Emma","Nina","Adam","Hugo","Lina"];
+const txt=["Excellent","Cuisine incroyable","Très copieux","Accueil parfait","Une pépite"];
+const avis=document.getElementById("avisContainer");
+for(let j=0;j<20;j++){
+  const d=document.createElement("div");
+  d.className="vglass";
+  d.innerHTML=`★★★★★<br><b>${noms[Math.floor(Math.random()*noms.length)]}</b><p>${txt[Math.floor(Math.random()*txt.length)]}</p>`;
+  avis.appendChild(d);
+  obs.observe(d);
+}
+</script>
+
+</body>
+</html>
